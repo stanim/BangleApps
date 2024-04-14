@@ -1,0 +1,26 @@
+{
+  "id": "breakout",
+  "name": "BreakOut",
+  "shortName": "BreakOut",
+  "version": "0.01",
+  "description": "Layers of bricks lines the top of the screen and the goal is to destroy them all by repeatedly bouncing a ball off a paddle into them.",
+  "icon": "app.png",
+  "tags": "game",
+  "supports": ["BANGLEJS"],
+  "storage": [
+    {
+      "name": "breakout.app.js",
+      "url": "app.js"
+    },
+    {
+      "name": "breakout.settings.js",
+      "url": "settings.js"
+    },
+    {
+      "name": "breakout.img",
+      "url": "app-icon.js",
+      "evaluate": true
+    }
+  ],
+  "data": [{ "name": "breakout.settings.json" }]
+}
