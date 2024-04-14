@@ -27,14 +27,14 @@
       max: 50,
       min: 1,
       onchange: function (v) {
-        settings.howmany = v;
+        settings.level = v;
         writeSettings();
       },
       value: settings.level || 1
     },
     "Save level?": {
       onchange: function (v) {
-        settings.onoroff = v;
+        settings.levelSave = v;
         writeSettings();
       },
       value: Boolean(settings.levelSave) // !! converts undefined to false
