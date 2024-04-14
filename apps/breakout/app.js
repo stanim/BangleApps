@@ -10,7 +10,6 @@ let buzzing = true;
 let clock;
 let clockString = "Clock";
 let interval;
-let scoreHighest = 0;
 let screen = { height: g.getHeight(), width: g.getWidth() };
 screen.width2 = screen.width >> 1;
 screen.height2 = screen.height >> 1;
