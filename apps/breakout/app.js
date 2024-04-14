@@ -1,7 +1,7 @@
 // Bangle.js Breakout Game
 /*jslint bitwise:true, for:true, white:true*/
 /*global Bangle,BTN1,BTN3,clearInterval,E,g,require,setInterval,setWatch*/
-const angleMax = 75 * Math.PI / 180;
+const angleMax = 75 * (Math.PI / 180);
 const bgColor = "#000";
 const levelMax = 50;
 const timeout = 1e3 / 30; // max 50 fps
@@ -314,7 +314,7 @@ function playLevel(game) {
     y: screen.height - 4
   };
 
-  const angle = (Math.random() * Math.PI) / 2 + Math.PI / 4;
+  const angle = Math.PI * (Math.random() / 2 + 0.25);
   let ball = {
     color: "#FF0",
     cx: screen.width2,
@@ -323,7 +323,6 @@ function playLevel(game) {
     vy: -Math.sin(angle) * level.speed, // vertical velocity
     yMin: paddle.y - 3
   };
-  console.log(angle*180/Math.PI, ball)
 
   // Input for Bangle.js 1
   Bangle.setUI({ mode: "leftright" }, function (dir) {
