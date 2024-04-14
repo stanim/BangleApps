@@ -1,14 +1,10 @@
 // Bangle.js Breakout Game
 /*jslint bitwise:true, for:true, white:true*/
 /*global Bangle,BTN1,BTN3,clearInterval,E,g,require,setInterval,setWatch*/
-const degrees = Math.PI / 180;
-const degrees90 = Math.PI / 2;
-const sqrt2 = Math.sqrt(2);
-
-const angleMax = 75 * degrees;
+const angleMax = 75 * Math.PI / 180;
 const bgColor = "#000";
 const levelMax = 50;
-const timeout = 1e3 / 30; // max 50pfs
+const timeout = 1e3 / 30; // max 50 fps
 
 let buzzing = true;
 let clock;
@@ -234,7 +230,7 @@ function hitPaddle(ball, paddle, level) {
   // hit the paddle ?
   const dx = Math.abs(ball.cx - paddle.cx);
   if (dx < paddle.width2) {
-    const angle = degrees90 + (dx / paddle.width2) * angleMax;
+    const angle = Math.PI / 2 + (dx / paddle.width2) * angleMax;
     const vx = level.speed * Math.cos(angle);
     if (ball.vx < 0) {
       ball.vx = vx;
@@ -319,14 +315,16 @@ function playLevel(game) {
     y: screen.height - 4
   };
 
+  const angle = (Math.random() * Math.PI) / 2 + Math.PI / 4;
   let ball = {
     color: "#FF0",
     cx: screen.width2,
     cy: paddle.y - 3,
-    vx: level.speed / sqrt2, // horizontal velocity
-    vy: -level.speed / sqrt2, // vertical velocity
+    vx: Math.cos(angle) * level.speed, // horizontal velocity
+    vy: -Math.sin(angle) * level.speed, // vertical velocity
     yMin: paddle.y - 3
   };
+  console.log(angle*180/Math.PI, ball)
 
   // Input for Bangle.js 1
   Bangle.setUI({ mode: "leftright" }, function (dir) {
